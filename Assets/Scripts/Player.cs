@@ -32,11 +32,18 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
 
     private void Start() {
         gameInput.OnInteractAction += GameInput_OnInteractAction;
+        gameInput.OnInteractAlternateAction += GameInput_OnInteractAlternateAction;
     }
 
     private void GameInput_OnInteractAction(object sender, System.EventArgs e) {
         if (selectedCounter != null) {
             selectedCounter.Interact(this);
+        }
+    }
+
+    private void GameInput_OnInteractAlternateAction(object sender, System.EventArgs e) {
+        if (selectedCounter != null) {
+            selectedCounter.InteractAlternate(this);
         }
     }
 
@@ -89,7 +96,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
             // Cannot move torwards moveDir
             // Try moving only along the x axis
             Vector3 moveDirX = new Vector3(inputVector.x, 0, 0).normalized;
-            canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDistance);
+            canMove = moveDir.x != 0  && !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDistance);
 
             if (canMove)
             {
