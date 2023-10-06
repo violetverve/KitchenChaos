@@ -11,7 +11,7 @@ public class KitchenObject : MonoBehaviour {
         return kitchenObjectSO;
     }
 
-    public void SetClearCounter(IKitchenObjectParent kitchenObjectParent) {
+    public void SetKitchenObjectParent(IKitchenObjectParent kitchenObjectParent) {
         if (this.kitchenObjectParent != null) {
             this.kitchenObjectParent.ClearKitchenObject();
         }
@@ -19,7 +19,7 @@ public class KitchenObject : MonoBehaviour {
         this.kitchenObjectParent = kitchenObjectParent;
 
         if (kitchenObjectParent.HasKitchenObject()) {
-           Debug.Log("Couneter already has a KitchenObject");
+           Debug.Log("IKitchenObjectParent already has a KitchenObject");
         }
         kitchenObjectParent.SetKitchenObject(this);
 
@@ -29,11 +29,5 @@ public class KitchenObject : MonoBehaviour {
 
     public IKitchenObjectParent GetKitchenObjectParent() {
         return kitchenObjectParent;
-    }
-
-    public void SetKitchenObjectParent(IKitchenObjectParent kitchenObjectParent) {
-        this.kitchenObjectParent = kitchenObjectParent;
-        transform.parent = kitchenObjectParent.GetKitchenObjectFollowTransform();
-        transform.localPosition = Vector3.zero;
     }
 }

@@ -64,7 +64,6 @@ public class Player : MonoBehaviour, IKitchenObjectParent {
         if (Physics.Raycast(transform.position, lastInteractDirection, out RaycastHit raycastHit, interactDistance, countersLayerMask)) {
             if (raycastHit.transform.TryGetComponent(out BaseCounter baseCounter)) {
                 if (baseCounter != selectedCounter) {
-                    // Debug.Log("Player.HandleInteractions(): Setting selected counter to " + baseCounter.name);
                     SetSelectedCounter(baseCounter);
                 }  
             } else {
