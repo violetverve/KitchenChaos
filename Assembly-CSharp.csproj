@@ -82,8 +82,8 @@
     <Compile Include="Assets\PlayerInputActions.cs" />
     <Compile Include="Assets\Scripts\Counters\PlatesCounter.cs" />
     <Compile Include="Assets\Scripts\GameInput.cs" />
-    <Compile Include="Assets\Scripts\KitchenObject.cs" />
     <Compile Include="Assets\Scripts\DeliveryManager.cs" />
+    <Compile Include="Assets\Scripts\KitchenObject.cs" />
     <Compile Include="Assets\Scripts\Counters\PlatesCounterVisual.cs" />
     <Compile Include="Assets\Scripts\UI\PlateIconSingleUI.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\RecipeSO.cs" />
