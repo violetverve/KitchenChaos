@@ -169,12 +169,16 @@ public class StoveCounter : BaseCounter, IHasProgress {
         return null;
     }
 
-     private BurningRecipeSO GetBurningRecipeSOWithInput(KitchenObjectSO input) {
+    private BurningRecipeSO GetBurningRecipeSOWithInput(KitchenObjectSO input) {
         foreach (BurningRecipeSO burningRecipeSO in burningRecipeSOArray) {
             if (burningRecipeSO.input == input) {
                 return burningRecipeSO;
             }
         }
         return null;
+    }
+
+    public bool IsFried() {
+        return state == State.Fried;
     }
 }

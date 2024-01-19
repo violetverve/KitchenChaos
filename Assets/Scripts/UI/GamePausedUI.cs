@@ -17,7 +17,8 @@ public class GamePausedUI : MonoBehaviour {
             Loader.LoadScene(Loader.Scene.MainMenuScene);
         });
         optionsButton.onClick.AddListener(() => {
-            OptionsUI.Instance.Show();
+            Hide();
+            OptionsUI.Instance.Show(Show);
         });
     }
 

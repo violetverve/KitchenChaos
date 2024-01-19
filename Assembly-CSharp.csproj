@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\UI\MainMenuUI.cs" />
     <Compile Include="Assets\Scripts\UI\DeliveryManagerSingleUI.cs" />
     <Compile Include="Assets\Scripts\Counters\BaseCounter.cs" />
+    <Compile Include="Assets\Scripts\UI\DeliveryResultUI.cs" />
     <Compile Include="Assets\Scripts\Counters\ContainerCounterVisual.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\CuttingRecipeSO.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\RecipeListSO.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Assets\Scripts\Counters\TrashCounter.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\BurningRecipeSO.cs" />
     <Compile Include="Assets\Scripts\PlateKitchenObject.cs" />
+    <Compile Include="Assets\Scripts\UI\StoveBurnFlashingBarUI.cs" />
     <Compile Include="Assets\Scripts\UI\PlateIconsUI.cs" />
     <Compile Include="Assets\Scripts\LookAtCamera.cs" />
     <Compile Include="Assets\Scripts\Counters\ClearCounter.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="Assets\Scripts\Counters\StoveCounterVisual.cs" />
     <Compile Include="Assets\Scripts\Counters\CuttingCounter.cs" />
     <Compile Include="Assets\Scripts\IKitchenObjectParent.cs" />
+    <Compile Include="Assets\Scripts\UI\StoveBurnWarningUI.cs" />
     <Compile Include="Assets\PlayerInputActions.cs" />
     <Compile Include="Assets\Scripts\Counters\PlatesCounter.cs" />
     <Compile Include="Assets\Scripts\GameInput.cs" />
@@ -98,6 +101,7 @@
     <Compile Include="Assets\Scripts\UI\PlateIconSingleUI.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\AudioClipRefsSO.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\RecipeSO.cs" />
+    <Compile Include="Assets\Scripts\UI\TutorialUI.cs" />
     <Compile Include="Assets\Scripts\UI\GameStartCountdownUI.cs" />
     <Compile Include="Assets\Scripts\UI\GameOverUI.cs" />
     <Compile Include="Assets\Scripts\Counters\CuttingCounterVisual.cs" />
