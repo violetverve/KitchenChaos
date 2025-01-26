@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class TutorialUI : MonoBehaviour {
 
+    [SerializeField] private List<BindingButtonUI> _bindingButtons;
 
     [SerializeField] private TextMeshProUGUI keyMoveUpText;
     [SerializeField] private TextMeshProUGUI keyMoveDownText;
@@ -14,7 +15,6 @@ public class TutorialUI : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI keyInteractText;
     [SerializeField] private TextMeshProUGUI keyInteractAlternateText;
     [SerializeField] private TextMeshProUGUI keyPauseText;
-
 
     private void Start() {
         GameInput.Instance.OnBindingRebound += GameInput_OnBindingRebound;
@@ -37,13 +37,18 @@ public class TutorialUI : MonoBehaviour {
     }
 
     private void UpdateVisual() {
-        keyMoveUpText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Move_Up);
-        keyMoveDownText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Move_Down);
-        keyMoveLeftText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Move_Left);
-        keyMoveRightText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Move_Right);
-        keyInteractText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Interact);
-        keyInteractAlternateText.text = GameInput.Instance.GetBindingText(GameInput.Binding.InteractAlternate);
-        keyPauseText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Pause);
+        //keyMoveUpText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Move_Up);
+        //keyMoveDownText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Move_Down);
+        //keyMoveLeftText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Move_Left);
+        //keyMoveRightText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Move_Right);
+        //keyInteractText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Interact);
+        //keyInteractAlternateText.text = GameInput.Instance.GetBindingText(GameInput.Binding.InteractAlternate);
+        //keyPauseText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Pause);
+
+        foreach (var button in _bindingButtons)
+        {
+            button.UpdateText();
+        }
     }
 
     private void Show() {

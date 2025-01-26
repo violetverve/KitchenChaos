@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KitchenGameManager : MonoBehaviour {
 
@@ -33,15 +34,22 @@ public class KitchenGameManager : MonoBehaviour {
 
     private void Start() {
         GameInput.Instance.OnPauseAction += GameInput_OnPauseAction;
-        GameInput.Instance.OnInteractAction += GameInput_OnInteractAction;
     }
 
-    private void GameInput_OnInteractAction(object sender, EventArgs e)
-    {
-        if (state == State.WaitingToStart)
+    private void CheckIfStart()
+    { 
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             state = State.CountingDownToStart;
             OnStateChanged?.Invoke(this, EventArgs.Empty);
+        }
+    }
+
+    private void CheckIfRestart()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("LoadingScene");
         }
     }
 
@@ -52,6 +60,7 @@ public class KitchenGameManager : MonoBehaviour {
     private void Update() {
         switch (state) {
             case State.WaitingToStart:
+                CheckIfStart();
                 break;
             case State.CountingDownToStart:
                 countdownToStartTimer -= Time.deltaTime;
@@ -69,6 +78,7 @@ public class KitchenGameManager : MonoBehaviour {
                 }
                 break;
             case State.GameOver:
+                CheckIfRestart();
                 break;
         }
 

@@ -88,13 +88,18 @@ public class GameInput : MonoBehaviour {
         }
     }
 
-    public void RebindBinding(Binding binding, Action onActionRebound) {
+    public void RebindBinding(Binding binding, Action onActionRebound)
+    {
+
+        Debug.Log("Rebinding in game input " + binding.ToString());
+
         playerInputActions.Player.Disable();
 
         InputAction inputAction;
         int bindingIndex;
 
-        switch (binding) {
+        switch (binding)
+        {
             default:
             case Binding.Move_Up:
                 inputAction = playerInputActions.Player.Move;
@@ -126,16 +131,56 @@ public class GameInput : MonoBehaviour {
                 break;
 
         }
-        inputAction.PerformInteractiveRebinding(bindingIndex).OnComplete(callback => {
-            callback.Dispose();
-            playerInputActions.Player.Enable();
-            onActionRebound();
 
-            PlayerPrefs.SetString(PLAYER_PREFS_BINDING, playerInputActions.SaveBindingOverridesAsJson());
-            PlayerPrefs.Save();
+        inputAction.PerformInteractiveRebinding(bindingIndex)
+            .WithControlsExcluding("<Mouse>")
+            .OnComplete(callback =>
+            {
+                callback.Dispose();
+                playerInputActions.Player.Enable();
+                onActionRebound();
 
-            OnBindingRebound?.Invoke(this, EventArgs.Empty);
-        }).Start();
+                PlayerPrefs.SetString(PLAYER_PREFS_BINDING, playerInputActions.SaveBindingOverridesAsJson());
+                PlayerPrefs.Save();
+
+                OnBindingRebound?.Invoke(this, EventArgs.Empty);
+            }).Start();
+
+
+        //inputAction.PerformInteractiveRebinding(bindingIndex)
+        //.WithControlsExcluding("<Mouse>")
+        //.OnComplete(callback =>
+        //{
+        //    //rebindCount++;
+
+        //    //if (rebindCount > 1)
+        //    //{
+        //    //    rebindCount = 0;
+        //    //    callback.Dispose();
+
+        //    //    Debug.Log("Rebinding cancelled");
+        //    //    return;
+        //    //}
+
+        //    // Debug log to check what input was registered
+        //    Debug.Log($"Rebinding completed with: {inputAction.bindings[bindingIndex].effectivePath}");
+
+        //    callback.Dispose();
+
+        //    // Enable player input actions again
+        //    playerInputActions.Player.Enable();
+
+        //    // Trigger the rebound action
+        //    onActionRebound();
+
+        //    // Save the new binding configuration
+        //    PlayerPrefs.SetString(PLAYER_PREFS_BINDING, playerInputActions.SaveBindingOverridesAsJson());
+        //    PlayerPrefs.Save();
+
+        //    // Invoke the rebound event
+        //    OnBindingRebound?.Invoke(this, EventArgs.Empty);
+        //})
+        //.Start();
     }
 
 }
